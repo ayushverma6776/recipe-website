@@ -59,6 +59,31 @@ const recipes = [
         ingredients: "Paneer, potatoes, cream, spices",
         instructions: "Prepare kofta balls, fry and serve with creamy gravy."
     }
+    {
+        name: "Shahi Paneer",
+        image: "https://via.placeholder.com/300x150?text=Shahi+Paneer",
+        ingredients: "Paneer, cream, cashews, spices",
+        instructions: "Cook paneer in rich cashew and cream-based gravy."
+    },
+    {
+        name: "Paneer Butter Masala",
+        image: "https://via.placeholder.com/300x150?text=Paneer+Butter+Masala",
+        ingredients: "Paneer, tomato gravy, cream, butter, spices",
+        instructions: "Cook paneer in creamy tomato-based gravy enriched with butter."
+    },
+    {
+        name: "Paneer Bhurji",
+        image: "https://via.placeholder.com/300x150?text=Paneer+Bhurji",
+        ingredients: "Crumbled paneer, onions, tomatoes, spices",
+        instructions: "Saute paneer with onions, tomatoes, and spices."
+    },
+    {
+        name: "Paneer Lababdar",
+        image: "https://via.placeholder.com/300x150?text=Paneer+Lababdar",
+        ingredients: "Paneer, tomatoes, cashews, cream, spices",
+        instructions: "Cook paneer in a creamy tomato and cashew-based sauce."
+    },
+    
 ];
 
 const recipeList = document.getElementById("recipe-list");
