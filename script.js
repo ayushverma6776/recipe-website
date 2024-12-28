@@ -58,7 +58,50 @@ const recipes = [
         image: "https://via.placeholder.com/300x150?text=Malai+Kofta",
         ingredients: "Paneer, potatoes, cream, spices",
         instructions: "Prepare kofta balls, fry and serve with creamy gravy."
-    }
+    } 
+      const recipes = [
+    { 
+        name: "Vegetable Biryani", 
+        image: "https://via.placeholder.com/300x150?text=Vegetable+Biryani",
+        ingredients: "Rice, mixed vegetables, yogurt, spices",
+        instructions: "Cook vegetables with spices, layer with rice, and steam together."
+    },
+    { 
+        name: "Paneer Butter Masala", 
+        image: "https://via.placeholder.com/300x150?text=Paneer+Butter+Masala",
+        ingredients: "Paneer, tomatoes, butter, cream, spices",
+        instructions: "Prepare tomato-based gravy, add spices and paneer, cook with cream."
+    },
+    { 
+        name: "Aloo Paratha", 
+        image: "https://via.placeholder.com/300x150?text=Aloo+Paratha",
+        ingredients: "Wheat flour, potatoes, spices",
+        instructions: "Stuff seasoned potatoes into dough, roll, and cook on a griddle."
+    },
+    { 
+        name: "Chole Bhature", 
+        image: "https://via.placeholder.com/300x150?text=Chole+Bhature",
+        ingredients: "Chickpeas, flour, spices",
+        instructions: "Cook chickpeas with spices, prepare deep-fried bread using dough."
+    },
+    // Add 16 more recipes following the same format
+];
+
+recipes.forEach(recipe => {
+    const card = document.createElement("div");
+    card.className = "recipe-card";
+    card.innerHTML = `
+        <img src="${recipe.image}" alt="${recipe.name}">
+        <h3>${recipe.name}</h3>
+        <button onclick="toggleDetails(this)">View Recipe</button>
+        <div class="recipe-details">
+            <p><strong>Ingredients:</strong> ${recipe.ingredients}</p>
+            <p><strong>Instructions:</strong> ${recipe.instructions}</p>
+        </div>
+    `;
+    recipeList.appendChild(card);
+});
+
 ];
 
 const recipeList = document.getElementById("recipe-list");
