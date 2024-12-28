@@ -12,30 +12,6 @@ const recipes = [
         instructions: "Cook chicken, prepare tomato-based creamy gravy, combine and simmer."
     },
     {
-        name: "Shahi Paneer",
-        image: "https://via.placeholder.com/300x150?text=Shahi+Paneer",
-        ingredients: "Paneer, cream, cashews, spices",
-        instructions: "Cook paneer in rich cashew and cream-based gravy."
-    },
-    {
-        name: "Paneer Butter Masala",
-        image: "https://via.placeholder.com/300x150?text=Paneer+Butter+Masala",
-        ingredients: "Paneer, tomato gravy, cream, butter, spices",
-        instructions: "Cook paneer in creamy tomato-based gravy enriched with butter."
-    },
-    {
-        name: "Paneer Bhurji",
-        image: "https://via.placeholder.com/300x150?text=Paneer+Bhurji",
-        ingredients: "Crumbled paneer, onions, tomatoes, spices",
-        instructions: "Saute paneer with onions, tomatoes, and spices."
-    },
-    {
-        name: "Paneer Lababdar",
-        image: "https://via.placeholder.com/300x150?text=Paneer+Lababdar",
-        ingredients: "Paneer, tomatoes, cashews, cream, spices",
-        instructions: "Cook paneer in a creamy tomato and cashew-based sauce."
-    },
-    {
         name: "Masala Dosa",
         image: "https://via.placeholder.com/300x150?text=Masala+Dosa",
         ingredients: "Rice, lentils, potatoes, spices",
@@ -69,7 +45,7 @@ const recipes = [
         name: "Veg Pulao",
         image: "https://via.placeholder.com/300x150?text=Veg+Pulao",
         ingredients: "Rice, mixed vegetables, spices",
-        instructions: "Cook rice with sautéed vegetables and spices."
+        instructions: "Cook rice with sautÃ©ed vegetables and spices."
     },
     {
         name: "Paneer Tikka",
@@ -92,4 +68,27 @@ recipes.forEach(recipe => {
     card.className = "recipe-card";
     card.innerHTML = `
         <img src="${recipe.image}" alt="${recipe.name}">
-        <h3>${recipe.name}</h3…
+        <h3>${recipe.name}</h3>
+        <button onclick="toggleDetails(this)">View Recipe</button>
+        <div class="recipe-details">
+            <p><strong>Ingredients:</strong> ${recipe.ingredients}</p>
+            <p><strong>Instructions:</strong> ${recipe.instructions}</p>
+        </div>
+    `;
+    recipeList.appendChild(card);
+});
+
+function toggleDetails(button) {
+    const details = button.nextElementSibling;
+    details.style.display = details.style.display === "block" ? "none" : "block";
+}
+
+function searchRecipes() {
+    const searchQuery = document.getElementById("searchBar").value.toLowerCase();
+    const recipeCards = document.querySelectorAll('.recipe-card');
+
+    recipeCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        card.style.display = title.includes(searchQuery) ? "block" : "none";
+    });
+}
