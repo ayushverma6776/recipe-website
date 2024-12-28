@@ -10,23 +10,35 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background-color: var(--bg-color);
+    background: linear-gradient(to bottom, #ffefba, #ffffff);
     color: var(--secondary-color);
 }
 
 header {
-    background-color: var(--primary-color);
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+    ), 
+    url('https://via.placeholder.com/1500x500?text=Delicious+Indian+Recipes') no-repeat center center/cover;
     color: var(--text-color);
     text-align: center;
-    padding: 20px;
+    padding: 60px 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 header p {
-    margin: 10px 0;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 header input {
@@ -76,16 +88,17 @@ h2 {
 }
 
 .recipe-card {
-    background-color: var(--text-color);
-    color: var(--secondary-color);
+    background: #fff;
+    border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: var(--box-shadow);
-    transition: transform 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .recipe-card:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .recipe-card img {
@@ -106,6 +119,9 @@ h2 {
     padding: 10px;
     cursor: pointer;
     width: 100%;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background 0.3s;
 }
 
 .recipe-card button:hover {
@@ -115,6 +131,9 @@ h2 {
 .recipe-details {
     padding: 10px;
     display: none;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    color: #555;
 }
 
 footer {
