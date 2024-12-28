@@ -47,7 +47,18 @@ const recipes = [
         ingredients: "Rice, mixed vegetables, spices",
         instructions: "Cook rice with sautÃ©ed vegetables and spices."
     },
-    
+    {
+        name: "Paneer Tikka",
+        image: "https://via.placeholder.com/300x150?text=Paneer+Tikka",
+        ingredients: "Paneer, yogurt, spices",
+        instructions: "Marinate paneer, skewer and grill or bake until golden."
+    },
+    {
+        name: "Malai Kofta",
+        image: "https://via.placeholder.com/300x150?text=Malai+Kofta",
+        ingredients: "Paneer, potatoes, cream, spices",
+        instructions: "Prepare kofta balls, fry and serve with creamy gravy."
+    }
 ];
 
 const recipeList = document.getElementById("recipe-list");
