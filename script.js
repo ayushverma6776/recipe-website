@@ -59,7 +59,7 @@ const recipes = [
         ingredients: "Paneer, potatoes, cream, spices",
         instructions: "Prepare kofta balls, fry and serve with creamy gravy."
     } 
-      const recipes = [
+
     { 
         name: "Vegetable Biryani", 
         image: "https://via.placeholder.com/300x150?text=Vegetable+Biryani",
@@ -84,23 +84,6 @@ const recipes = [
         ingredients: "Chickpeas, flour, spices",
         instructions: "Cook chickpeas with spices, prepare deep-fried bread using dough."
     },
-    // Add 16 more recipes following the same format
-];
-
-recipes.forEach(recipe => {
-    const card = document.createElement("div");
-    card.className = "recipe-card";
-    card.innerHTML = `
-        <img src="${recipe.image}" alt="${recipe.name}">
-        <h3>${recipe.name}</h3>
-        <button onclick="toggleDetails(this)">View Recipe</button>
-        <div class="recipe-details">
-            <p><strong>Ingredients:</strong> ${recipe.ingredients}</p>
-            <p><strong>Instructions:</strong> ${recipe.instructions}</p>
-        </div>
-    `;
-    recipeList.appendChild(card);
-});
 
 ];
 
