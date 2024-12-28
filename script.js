@@ -1,61 +1,61 @@
 const recipes = [
     {
         name: "Hyderabadi Biryani",
-        image: "https://via.placeholder.com/300x150?text=Hyderabadi+Biryani",
+        image: "https://images.app.goo.gl/LBUpV8XtxodwzZPw6",
         ingredients: "Basmati rice, chicken, spices",
         instructions: "Marinate chicken, layer with cooked rice, and cook on low flame."
     },
     {
         name: "Butter Chicken",
-        image: "https://via.placeholder.com/300x150?text=Butter+Chicken",
+        image: "https://images.app.goo.gl/emF6uBAZPaSL5mGh6",
         ingredients: "Chicken, cream, butter, spices",
         instructions: "Cook chicken, prepare tomato-based creamy gravy, combine and simmer."
     },
     {
         name: "Masala Dosa",
-        image: "https://via.placeholder.com/300x150?text=Masala+Dosa",
+        image: "https://images.app.goo.gl/AL7G9Phf3Uq5PHit5",
         ingredients: "Rice, lentils, potatoes, spices",
         instructions: "Ferment rice-lentil batter, make dosa, and stuff with spicy potato filling."
     },
     {
         name: "Gulab Jamun",
-        image: "https://via.placeholder.com/300x150?text=Gulab+Jamun",
+        image: "https://images.app.goo.gl/AL7G9Phf3Uq5PHit5",
         ingredients: "Milk powder, sugar, cardamom",
         instructions: "Fry dough balls, soak in sugar syrup."
     },
     {
         name: "Pani Puri",
-        image: "https://via.placeholder.com/300x150?text=Pani+Puri",
+        image: "https://images.app.goo.gl/mHQuC4zJ5EkqYm7W9",
         ingredients: "Semolina, tamarind, spices",
         instructions: "Make puris, prepare tangy water, fill and serve."
     },
     {
         name: "Palak Paneer",
-        image: "https://via.placeholder.com/300x150?text=Palak+Paneer",
+        image: "https://images.app.goo.gl/mTxgmqMi26BaG4cu6",
         ingredients: "Spinach, paneer, spices",
         instructions: "Blanch spinach, blend into puree, add spices and paneer."
     },
     {
         name: "Aloo Gobi",
-        image: "https://via.placeholder.com/300x150?text=Aloo+Gobi",
+        image: "https://images.app.goo.gl/pbK2mCG744zap3qo6",
         ingredients: "Potatoes, cauliflower, spices",
         instructions: "Saute potatoes and cauliflower, add spices and cook until tender."
     },
     {
         name: "Veg Pulao",
-        image: "https://via.placeholder.com/300x150?text=Veg+Pulao",
+        image: "https://images.app.goo.gl/Ucji9Ks5EdPTZbGa6",
         ingredients: "Rice, mixed vegetables, spices",
         instructions: "Cook rice with sautÃ©ed vegetables and spices."
     },
     {
         name: "Paneer Tikka",
-        image: "https://via.placeholder.com/300x150?text=Paneer+Tikka",
+        image: "https://images.app.goo.gl/2WAqbtX5Ze3TmGrMA",
         ingredients: "Paneer, yogurt, spices",
         instructions: "Marinate paneer, skewer and grill or bake until golden."
     },
     {
         name: "Malai Kofta",
-        image: "https://via.placeholder.com/300x150?text=Malai+Kofta",
+        image: "https://images.app.goo.gl/UQkUzo1c9z8gXwms7",
         ingredients: "Paneer, potatoes, cream, spices",
         instructions: "Prepare kofta balls, fry and serve with creamy gravy."
     }
