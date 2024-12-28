@@ -1,7 +1,7 @@
 const recipes = [
     {
         name: "Hyderabadi Biryani",
-        image: "https://images.app.goo.gl/LBUpV8XtxodwzZPw6",
+        image: "thumb__1200_0_0_0_auto.jpg",
         ingredients: "Basmati rice, chicken, spices",
         instructions: "Marinate chicken, layer with cooked rice, and cook on low flame."
     },
