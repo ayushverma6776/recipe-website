@@ -1,39 +1,1412 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indian Recipes Hub</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Finder</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Smooth Scroll -->
+  <script>
+    document.documentElement.style.scrollBehavior = "smooth";
+  </script>
+  <script>
+    // Function to handle the search input and filter the recipes
+    function debouncedSearch() {
+      const searchInput = document.getElementById('search-input').value.toLowerCase();
+      const recipeCards = document.querySelectorAll('.recipe-card');
+      let resultsFound = false;
+
+      recipeCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+
+        if (title.includes(searchInput) || description.includes(searchInput)) {
+          card.style.display = 'block';  // Show matching card
+          resultsFound = true;
+        } else {
+          card.style.display = 'none';  // Hide non-matching card
+        }
+      });
+
+      const noResultsMessage = document.getElementById('no-results-message');
+      if (resultsFound) {
+        noResultsMessage.style.display = 'none';
+      } else {
+        noResultsMessage.style.display = 'block';  // Show "No results found" if nothing matches
+      }
+    }
+
+    // Debounce function to delay search input processing
+    let debounceTimer;
+    function debounce(callback, delay) {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(callback, delay);
+    }
+
+    function onInput() {
+      debounce(debouncedSearch, 300);
+    }
+
+    // Clear search input and reset filtering
+    function clearSearch() {
+      document.getElementById('search-input').value = '';
+      debouncedSearch(); // Reset to show all cards
+    }
+  </script>
 </head>
 <body>
-    <header>
-        <h1>Indian Recipes Hub</h1>
-        <p>Discover India's most famous recipes!</p>
-        <input type="text" id="searchBar" placeholder="Search for recipes..." onkeyup="searchRecipes()" />
-    </header>
-    <div class="container">
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#recipes">Recipes</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <main>`
-            <section id="recipes">
-                <h2>India's Famous Recipes</h2>
-                <div id="recipe-list">
-                    <!-- Recipes will load here dynamically -->
-                </div>
-            </section>
-        </main>
+ 
+  <!-- Header Section -->
+  <header>
+    <div class="header-container">
+      <p style="font-size: 60px;" "><strong>Recipe Finder</strong> </p>
+      <br>
+     
+      <p>Your one-stop destination for delicious and easy-to-make recipes</p>
+
+      <!-- Search Form and Explore Recipes Button -->
+      <div class="search-explore-container">
+        <form method="get" class="search-form">
+          <input type="text" id="search-input" name="query" placeholder="Search for recipes..." class="search-input" oninput="debouncedSearch()">
+          <button type="submit" class="search-button">🔍</button>
+          <button type="button" class="clear-button" onclick="clearSearch()">Clear</button>
+        </form>
+        <a href="#recipes" class="cta-button">Explore Recipes</a>
+      </div>
     </div>
-    <footer>
-        <p>&copy; 2024 Indian Recipes Hub | Follow us on <a href="https://instagram.com" target="_blank">Instagram</a>, <a href="https://facebook.com" target="_blank">Facebook</a></p>
-        <p>Contact us: <a href="mailto:feedback@indianrecipeshub.com">feedback@indianrecipeshub.com</a></p>
-    </footer>
-    <script src="script.js"></script>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#recipes">Recipes</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <!-- Home Section -->
+      <section id="home"></section>
+      <style>
+        
+      </style>
+
+      <!-- Recipes Section -->
+      <section id="recipes">
+        <h2>Our Recipes</h2>
+        <div class="recipe-list">
+          <div class="recipe-card">
+            <img src="cb.jpg" alt="chole bhature" width="300" height="200"style="border: 2px solid black;">
+            <h3><a href="#chole-bhature">Chole Bhature</a></h3>
+            <p>Chole Bhature is a popular North Indian dish consisting of a spicy chickpea curry (chole) served with deep-fried, fluffy bread (bhature). It’s typically enjoyed as a filling meal, often accompanied by onions, pickles, and yogurt.</p>
+          </div>
+          <div class="recipe-card"> 
+            
+            <img src="pbm.jpeg" alt="Paneer Butter Masala" width="200" height="200"style="border: 4px solid black;">
+            <h3><a href="#paneer-butter-masala">Paneer Butter Masala</a></h3>
+            <p>Paneer Butter Masala is a popular North Indian dish made with soft cubes of paneer (Indian cottage cheese) cooked in a rich and creamy tomato-based gravy. The dish is known for its smooth, buttery texture and flavorful blend of spices, making it a favorite in Indian cuisine. </p>
+          </div>
+      
+         
+           <div class="recipe-card">
+            <img src="Dosa.webp" alt="Dosa" width="200" height="200"style="border: 4px solid black;">
+            <h3><a href="#Dosa">Dosa</a></h3>
+            <p>A dosa is a thin, crispy pancake made from a fermented batter of rice and urad dal. It’s a popular South Indian dish often served with sambar and chutneys.</p>
+          </div>
+          <div class="recipe-card">
+            <img src="Poha.webp" alt="Poha" width="200" height="200"style="border: 4px solid black;">
+            <h3><a href="#poha">Poha</a></h3>
+            <p>
+              Poha is a traditional Indian dish made from flattened rice (poha), which is light and easy to cook. It is typically sautéed with onions, mustard seeds, turmeric, green chilies, and curry leaves. Often garnished with peanuts, coriander leaves, and a squeeze of lemon, it’s a popular breakfast or snack option, particularly in Western and Central India.</p>
+          </div>
+          <div class="recipe-card">
+            <img src="Aloo paratha.webp" alt="Aloo paratha" width="220" height="200"style="border: 4px solid black;">
+            <h3><a href="#Aloo-paratha">Aloo paratha</a></h3>
+            <p>Aloo Paratha is a traditional Indian flatbread stuffed with a spiced potato filling. The dough is made from whole wheat flour, and the filling typically consists of mashed potatoes mixed with ingredients like cumin, coriander, garam masala, onions, green chilies, and cilantro. The stuffed dough is rolled out into a flatbread and cooked on a griddle with ghee or oil. It’s commonly served with yogurt, pickles, and sometimes butter. Aloo paratha is a popular breakfast or lunch dish in North India.</p>
+          </div>
+          <div class="recipe-card">
+            <img src="Aloo gobhi.webp" alt="Aloo gobhi" width="250" height="200"style="border: 4px solid black;">
+            <h3><a href="#Aloo-gobhi">Aloo gobhi</a></h3>
+            <p>Aloo Gobi is a classic Indian dish made with potatoes (aloo) and cauliflower (gobhi) cooked together with a blend of spices like turmeric, cumin, coriander, garam masala, and sometimes ginger and garlic. The vegetables are sautéed until tender and flavorful. It’s typically served with roti, paratha, or rice and is a popular vegetarian curry in Indian cuisine.</p>
+          </div>
+          <div class="recipe-card">
+            <img src="Chana masala.webp" alt="Chana masala" width="220" height="200"style="border: 4px solid black;">
+            <h3><a href="#Chana-masala">Chana masala</a></h3>
+       
+            <p>Chana Masala is a popular North Indian dish made with chickpeas (chana) cooked in a spiced, tangy tomato-based gravy. The dish is seasoned with a variety of spices, including cumin, coriander, garam masala, turmeric, and amchur (dry mango powder), giving it a rich and aromatic flavor. It is often served with rice or Indian breads like roti, naan, or puri. Chana masala is a flavorful and nutritious vegetarian dish, enjoyed by many across India and beyond.</p>
+          </div>
+          <div class="recipe-card">
+            <img src="Matar pulao.webp" alt="Matar pulao" width="265" height="200"style="border: 4px solid black;">
+            <h3><a href="#Matar-pulao">Matar pulao</a></h3>
+            
+            <p>Matar Pulao is a fragrant Indian rice dish made with basmati rice and green peas (matar), cooked together with aromatic spices like cumin, cinnamon, cloves, bay leaves, and cardamom. It's a simple yet flavorful dish, often served as a side with curries or yogurt. Matar pulao is popular in Indian homes as a quick and comforting meal.</p>
+          </div>
+          <div class="recipe-card">
+            <img src="Lassi.webp" alt="Lassi" width="220" height="200"style="border: 4px solid black;">
+            <h3><a href="#Lassi">Lassi</a></h3>
+        
+            <p>
+              Lassi is a traditional Indian yogurt-based drink, typically served cold. It can be either sweet or salty.
+              
+              Sweet lassi is made with yogurt, sugar, and sometimes flavored with fruits (like mango) or spices (like cardamom or rosewater).
+              Salty lassi is a savory version, made with yogurt, salt, cumin, and sometimes herbs like mint.
+              Lassi is refreshing and often enjoyed alongside meals, especially in the hot weather.</p>
+          </div>
+          <div class="recipe-card">
+            <img src="Methi thepla.webp" alt="Methi thepla" width="220" height="200"style="border: 4px solid black;">
+            <h3><a href="#Methi-thepla">Methi thepla</a></h3>
+          
+            <p>Methi Thepla is a traditional Gujarati flatbread made with fenugreek leaves (methi), whole wheat flour, and a blend of spices such as cumin, coriander, turmeric, and chili powder. The dough is kneaded with chopped fenugreek leaves and then rolled into thin discs, which are cooked on a hot griddle with ghee or oil. Methi thepla is soft, flavorful, and often enjoyed as a breakfast, snack, or light meal, typically served with yogurt, pickle, or chutney..</p>
+          </div>
+          <div class="recipe-card">
+            <img src="Tawa pulao.webp" alt="Tawa pulao" width="220" height="200"style="border: 4px solid black;">
+            <h3><a href="#Tawa-pulao">Tawa pulao</a></h3>
+            <p>
+              Tawa Pulao is a popular street food from Mumbai, made by stir-frying cooked rice with a variety of vegetables, spices, and a special blend of seasonings. The rice is cooked on a large flat griddle (tawa), which gives it a distinct smoky flavor. Key ingredients include mixed vegetables like peas, carrots, and bell peppers, along with spices such as garam masala, pav bhaji masala, cumin, and coriander. Tawa pulao is usually served with a squeeze of lemon, onions, and sometimes a side of raita.</p>
+          </div>
+          <div class="recipe-card">
+            <img src="Aloo tikki.webp" alt="Aloo tikki" width="220" height="200"style="border: 4px solid black;">
+            <h3><a href="#Aloo-tikki">Aloo tikki</a></h3>
+            <p>
+              Aloo Tikki is a popular Indian snack made from spiced mashed potatoes that are shaped into small patties and shallow-fried until crispy. The filling typically includes ingredients like boiled potatoes, green chilies, cumin, coriander, and sometimes peas or paneer. It’s often served with chutneys such as tamarind or mint chutney. Aloo tikki is commonly enjoyed as a street food or appetizer.</p>
+          </div>
+          <div class="recipe-card">
+            <img src="Dahi Puri.webp" alt="Dahi Puri" width="220" height="200"style="border: 4px solid black;">
+            <h3><a href="#Dahi-puri">Dahi Puri</a></h3>
+            <p> A popular street food, dahi puri consists of small, hollow puris filled with yogurt, tamarind chutney, potatoes, onions, and chickpeas. It's topped with spices and herbs, making it a tangy, sweet, and crunchy snack..</p>
+          </div>
+          <div class="recipe-card">
+            <img src="Simple vegetable soup.webp" alt="Simple vegetable soup" width="220" height="200"style="border: 4px solid black;">
+            <h3><a href="#Simple-vegetable-soup">Simple vegetable soup</a></h3>
+            <p>A light and healthy soup made by simmering a variety of vegetables like carrots, beans, peas, and potatoes with herbs and spices. It’s typically served as a starter or light meal.
+
+            </p>
+          </div>
+          <div class="recipe-card">
+            <img src="Cheela.webp" alt="Cheela" width="220" height="200"style="border: 4px solid black;">
+            <h3><a href="#Cheela">Cheela</a></h3>
+            <p>A savory Indian pancake made from gram flour (besan) and spices, often with vegetables like onions, tomatoes, or spinach added. It’s served with chutney or yogurt as a snack or breakfast.</p>
+          </div>
+          <div class="recipe-card">
+            <img src="Cabbage paratha.webp" alt="Cabbage paratha" width="220" height="200"style="border: 4px solid black;">
+            <h3><a href="#Cabbage-paratha">Cabbage paratha</a></h3>
+            <p> A stuffed flatbread made with whole wheat dough and grated cabbage, mixed with spices. The dough is rolled out and cooked on a griddle until golden and crispy. It’s served with yogurt or pickles.</p>
+          </div>
+          <div class="recipe-card">
+            <img src="Suji ka halwa.webp" alt="Suji ka halwa " width="220" height="200"style="border: 4px solid black;">
+            <h3><a href="#Suji-ka-halwa">Suji ka halwa</a></h3>
+            <p>A traditional Indian sweet dish made from semolina (suji), ghee, sugar, and cardamom. It’s cooked into a rich, slightly grainy dessert, often garnished with nuts like cashews and almonds.</p>
+          </div>
+          <div class="recipe-card">
+            <img src="Masoor dal.webp" alt="Masoor dal " width="220" height="200"style="border: 4px solid black;">
+            <h3><a href="#Masoor-dal">Masoor dal</a></h3>
+            <p>A simple, nutritious lentil dish made from red lentils (masoor dal), cooked with onions, tomatoes, and spices like turmeric, cumin, and garam masala. It's served with rice or roti for a hearty meal.</p>
+          </div>
+         
+        </div> 
+        
+
+        <!-- Recipe Pop-ups -->
+        <div class="popup" id="chole-bhature">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn"> </a>
+            
+            <p>  <h1>Quick Chole Bhature Recipe</h1>
+
+              <h2>Ingredients</h2>
+          
+              <h3>For Chole (Chickpea Curry):</h3>
+              <ol style="font-size: 27px; color: green;"class="ingredient-list">
+                  <li>Raw chickpeas (chole): 1 cup (Kacche chole)</li>
+                  <li>Onion: 1 small, finely chopped (Pyaaz)</li>
+                  <li>Tomato puree: 1 cup (Tamatar ka puree)</li>
+                  <li>Ginger-garlic paste: 1 tbsp (Adrak-lehsun ka paste)</li>
+                  <li>Green chili: 1, chopped (optional) (Hari mirch)</li>
+                  <li>Chole masala: 1 tbsp (or garam masala) (Chole masala)</li>
+                  <li>Cumin seeds: 1 tsp (Jeera)</li>
+                  <li>Turmeric powder: ½ tsp (Haldi powder)</li>
+                  <li>Red chili powder: 1 tsp (Lal mirch powder)</li>
+                  <li>Garam masala: ½ tsp (Garam masala)</li>
+                  <li>Coriander powder: 1 tsp (Dhania powder)</li>
+                  <li>Salt: to taste (Namak)</li>
+                  <li>Water: 3 cups (for cooking the chickpeas) (Paani)</li>
+                  <li>Oil: 2 tbsp (Tel)</li>
+                  <li>Fresh cilantro: for garnish (Hara dhania)</li>
+              </ol>
+          
+              <h3>For Bhature:</h3>
+              <ol style="font-size: 27px; color: green;">
+                  <li>All-purpose flour (maida): 1 ½ cups (Maida)</li>
+                  <li>Semolina (sooji): 1 tbsp (for crispiness) (Sooji)</li>
+                  <li>Baking powder: 1 tsp (Baking powder)</li>
+                  <li>Yogurt: 2 tbsp (Dahi)</li>
+                  <li>Warm water: as needed to knead the dough (Garam paani)</li>
+                  <li>Salt: ½ tsp (Namak)</li>
+                  <li>Oil: for deep frying (Tel)</li>
+              </ol>
+              
+          
+              <h2 >Instructions</h2>
+          
+              <h3>1. Soak the Raw Chickpeas:</h3>
+              <ol style="font-size: 27px; color: green;" >
+                  <li>Overnight Soaking: Soak the chickpeas overnight in plenty of water. They will expand and soften.</li>
+                  <li>Quick Soak (If you're in a hurry): Bring the chickpeas to a boil in water, turn off the heat, cover, and let them sit for 1 hour. Drain the water afterward.</li>
+              </ol>
+          
+              <h3>2. Cook the Chickpeas:</h3>
+              <ol style="font-size: 27px; color: green;">
+                  <li>Pressure Cook (For Faster Cooking): After soaking, rinse the chickpeas and add them to a pressure cooker with about 3 cups of water. Add a pinch of salt (optional) and cook for 3-4 whistles. The chickpeas should be soft and tender.</li>
+                  <li>If you're using a regular pot, it will take 45 minutes to 1 hour. Keep adding water as needed.</li>
+                  <li>Once the chickpeas are cooked, drain the excess water (keep some water to make the curry later).</li>
+              </ol>
+          
+              <h3>3. Make the Chole Curry:</h3>
+              <ol style="font-size: 27px; color: green;">
+                  <li>Heat oil in a pan and add cumin seeds (jeera). Let them splutter.</li>
+                  <li>Add onions (pyaaz) and sauté until golden brown.</li>
+                  <li>Add ginger-garlic paste (adrak-lehsun ka paste) and green chili (hari mirch), sauté for another minute.</li>
+                  <li>Add tomato puree (tamatar ka puree), turmeric powder (haldi powder), red chili powder (lal mirch powder), and coriander powder (dhania powder). Cook for 5-7 minutes until the oil separates from the masala.</li>
+                  <li>Add the cooked chickpeas (kacche chole) to the pan along with some of the cooking water. Adjust the consistency by adding more water if needed.</li>
+                  <li>Add chole masala and garam masala. Adjust salt to taste.</li>
+                  <li>Let it simmer for 10-15 minutes to blend the flavors.</li>
+              </ol>
+          
+              <h3>4. Make the Bhature:</h3>
+              <ol style="font-size: 27px; color: green;">
+                  <li>Mix dry ingredients: In a bowl, combine flour (maida), semolina (sooji), baking powder, and salt.</li>
+                  <li>Add yogurt (dahi): Mix in the yogurt to the dry ingredients.</li>
+                  <li>Knead dough: Gradually add warm water (garam paani) and knead the dough until it's soft and smooth.</li>
+                  <li>Let the dough rest for 15 minutes (if in a rush, you can skip resting, but it's better if you allow it to rest).</li>
+                  <li>Shape the bhature: Divide the dough into small balls and roll them into discs (about 4-5 inches in diameter).</li>
+                  <li>Heat oil (tel): Heat enough oil for deep frying in a pan.</li>
+                  <li>Fry the bhature: Once the oil is hot, carefully drop the rolled dough into the oil. It should puff up immediately. Flip and fry until golden brown on both sides.</li>
+                  <li>Drain the excess oil on paper towels.</li>
+              </ol>
+          
+              <h3>5. Serve:</h3>
+              <ol style="font-size: 27px; color: green;">
+                  <li>Plate the Chole (kacche chole) with the crispy Bhature.</li>
+                  <li>Optionally, garnish with fresh cilantro (hara dhania) and serve with onion salad and a wedge of lemon for added flavor.</li>
+              </ol></p>
+          </div>
+        </div>
+        <div class="popup" id="paneer-butter-masala">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+
+            <h2>Paneer Butter Masala</h2>
+        
+          <h2>Ingredients:</h2>
+          <ul>
+              <li>200g Paneer (Cottage Cheese)</li>
+              <li>2 tbsp Butter</li>
+              <li>1/2 cup Tamatar Puree (Tomato Puree)</li>
+              <li>1/4 cup Cream (Doodh Malai or Fresh Cream)</li>
+              <li>1 tsp Adrak-Lahsun Paste (Ginger-Garlic Paste)</li>
+              <li>1 tsp Garam Masala</li>
+              <li>1/2 tsp Lal Mirch Powder (Red Chilli Powder)</li>
+              <li>1/4 tsp Haldi (Turmeric Powder)</li>
+              <li>1/2 tsp Kasuri Methi (Dry Fenugreek Leaves)</li>
+              <li>Salt to taste</li>
+              <li>1 tsp Cheeni (Sugar) - Optional</li>
+              <li>1/4 cup Pani (Water)</li>
+              <li>Hara Dhania (Coriander Leaves) for garnish</li>
+          </ul>
+      
+          <h2>Instructions:</h2>
+          <ol>
+              <li>Cut the paneer into cubes.</li>
+              <li>Heat 1 tbsp butter in a pan on medium heat.</li>
+              <li>Once the butter melts, add 1 tsp ginger-garlic paste (adrak-lahsun paste) and sauté for a minute until the raw smell goes away.</li>
+              <li>Add 1/2 cup tomato puree (tamatar puree) and cook for 3-4 minutes until the oil starts separating from the masala.</li>
+              <li>Now, add 1/4 tsp haldi, 1/2 tsp red chilli powder (lal mirch), and 1 tsp garam masala. Mix well.</li>
+              <li>Add 1/4 cup water (pani) and let it cook for another 2-3 minutes until the gravy becomes smooth.</li>
+              <li>Add 1/4 cup cream (doodh malai) and stir until well combined.</li>
+              <li>Now, add the paneer cubes and mix gently so the paneer is coated in the masala. Cook for 2-3 minutes.</li>
+              <li>Sprinkle 1/2 tsp kasuri methi (dry fenugreek leaves) and 1 tsp sugar (cheeni) if you like it a bit sweet. Stir again.</li>
+              <li>Finally, add salt to taste and cook for 1 more minute. Garnish with fresh coriander leaves (hara dhania).</li>
+              <li>Serve hot with naan, roti, or rice!</li>
+          </ol>
+      
+          <h2>Enjoy your Paneer Butter Masala!</h2>
+           
+          </div>
+        </div>
+        <div class="popup" id="Aloo-paratha">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+           <h2>Ingredients:</h2>
+           <ul>
+               <li>1 cup Gehu ka Atta (Wheat Flour)</li>
+               <li>1 Boiled Aloo (Potato)</li>
+               <li>Salt, Red Chilli Powder, Cumin Powder (Jeera Powder)</li>
+               <li>Ghee or Oil (for cooking)</li>
+           </ul>
+       
+           <h2>Instructions:</h2>
+           
+           <h3><b>Make the dough:</b></h3>
+           <ol>
+               <li>Take a bowl and add 1 cup wheat flour (gehu ka atta).</li>
+               <li>Add a pinch of salt for flavor.</li>
+               <li>Gradually pour in water, little by little, and start kneading. Use your hands to bring the flour together into a soft dough.</li>
+               <li>Once the dough comes together, knead it for 5-10 minutes until smooth. If it's sticky, add a little more flour. If it's dry, add water.</li>
+               <li>Cover the dough with a damp cloth or kitchen towel and let it rest for 15-20 minutes.</li>
+           </ol>
+       
+           <h3><b>Prepare the stuffing:</b></h3>
+           <ol>
+               <li>Boil 1 potato (aloo) until soft. You can boil it in water or microwave it for a few minutes.</li>
+               <li>Peel and mash the boiled potato in a bowl.</li>
+               <li>Add salt, red chili powder, and cumin powder (jeera powder) to the mashed potato for flavor. You can also add a pinch of garam masala if you like.</li>
+               <li>Mix everything well.</li>
+           </ol>
+       
+           <h3><b>Stuff the paratha:</b></h3>
+           <ol>
+               <li>After the dough has rested, take a small ball of dough (about the size of a lemon). Roll it into a small round ball.</li>
+               <li>Flatten the dough ball with your fingers into a small disc, about 3-4 inches in diameter.</li>
+               <li>Place a spoonful of the prepared potato stuffing in the center. Be careful not to overfill it.</li>
+               <li>Gently bring the edges of the dough up to seal the filling inside. Pinch the edges together to seal it well.</li>
+           </ol>
+       
+           <h3><b>Roll out the paratha:</b></h3>
+           <ol>
+               <li>Once the stuffing is sealed, use a rolling pin to gently roll the dough into a round shape. Roll it evenly so the filling doesn’t come out. Be gentle so it doesn’t break.</li>
+               <li>If it sticks to the rolling pin, dust it lightly with some dry flour.</li>
+           </ol>
+       
+           <h3><b>Cook the paratha:</b></h3>
+           <ol>
+               <li>Heat a tawa (flat pan) on medium heat. Once it's hot, place the rolled paratha on it.</li>
+               <li>When you see small bubbles forming on top, flip it to the other side.</li>
+               <li>Apply a little ghee or oil on the top side. Flip again and cook for a minute until both sides are golden brown and crispy.</li>
+               <li>Repeat for the remaining dough and stuffing.</li>
+           </ol>
+       
+           <h3><b>Serve:</b></h3>
+           <ol>
+               <li>Serve your hot aloo paratha with plain yogurt, pickle, or a hot cup of tea.</li>
+           </ol>
+       
+           <h2>Enjoy your delicious Aloo Paratha!</h2>
+          </div>
+          
+        </div>
+        <div class="popup" id="Dosa">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+          <h2>Ingredients:</h2>
+          <ul>
+              <li>1 cup Chawal (Rice)</li>
+              <li>1/2 cup Urad Dal (Split Black Gram)</li>
+              <li>Salt to taste</li>
+              <li>Water as needed</li>
+              <li>Oil for cooking</li>
+          </ul>
+      
+          <h2>Instructions:</h2>
+      
+          <h3><b>Soak the rice and dal:</b></h3>
+          <ol>
+              <li>Soak rice (chawal) and urad dal separately in water for 4-6 hours or overnight.</li>
+          </ol>
+      
+          <h3><b>Grind into batter:</b></h3>
+          <ol>
+              <li>Drain the rice and dal and grind them together into a smooth batter.</li>
+              <li>Add water as needed to achieve a pancake batter consistency.</li>
+          </ol>
+      
+          <h3><b>Ferment the batter:</b></h3>
+          <ol>
+              <li>Cover the batter and leave it to ferment in a warm place for 6-8 hours or overnight.</li>
+          </ol>
+      
+          <h3><b>Cook the dosa:</b></h3>
+          <ol>
+              <li>Heat a non-stick pan or tawa over medium heat.</li>
+              <li>Pour a ladle of the batter and spread it into a thin, round shape.</li>
+              <li>Drizzle some oil around the edges and cook until the dosa turns golden brown and crispy (about 2-3 minutes).</li>
+              <li>Flip and cook for a few more seconds on the other side.</li>
+          </ol>
+      
+          <h3><b>Serve:</b></h3>
+          <ol>
+              <li>Serve the dosa with coconut chutney or sambar.</li>
+          </ol>
+      
+          <h2>Enjoy your crispy Dosa!</h2>
+      
+          </div>
+        </div>
+        <div class="popup" id="poha">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+           <h2>Ingredients:</h2>
+           <ul>
+               <li>1 cup Poha (Flattened Rice)</li>
+               <li>1 Onion (Pyaz), chopped</li>
+               <li>1 Potato (Aloo), chopped (optional)</li>
+               <li>1/2 tsp Rai (Mustard Seeds)</li>
+               <li>1/2 tsp Haldi (Turmeric Powder)</li>
+               <li>Salt to taste</li>
+               <li>2 tbsp Oil</li>
+               <li>Fresh Coriander for garnish (Hara Dhania)</li>
+           </ul>
+       
+           <h2>Instructions:</h2>
+       
+           <h3><b>Rinse the poha:</b></h3>
+           <ol>
+               <li>Rinse the poha under cold water until it softens. Drain the water and keep it aside.</li>
+           </ol>
+       
+           <h3><b>Cook the vegetables:</b></h3>
+           <ol>
+               <li>Heat 2 tablespoons of oil in a pan. Add mustard seeds (rai) and let them crackle.</li>
+               <li>Add the chopped onion (pyaz) and sauté for 3-4 minutes until golden brown.</li>
+               <li>If using, add the chopped potato (aloo) and cook for 5-7 minutes until soft.</li>
+           </ol>
+       
+           <h3><b>Prepare the poha:</b></h3>
+           <ol>
+               <li>Add turmeric powder (haldi), salt, and the rinsed poha to the pan. Mix gently to coat the poha with the spices.</li>
+               <li>Cook for another 2-3 minutes, stirring occasionally.</li>
+           </ol>
+       
+           <h3><b>Serve:</b></h3>
+           <ol>
+               <li>Garnish with fresh coriander (hara dhania) and serve hot.</li>
+           </ol>
+       
+           <h2>Enjoy your delicious Poha!</h2>
+       
+            
+          </div>
+        </div>
+        <div class="popup" id="Aloo-gobhi">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+        <h2>Ingredients:</h2>
+        <ul>
+            <li>1 Potato (Aloo), diced</li>
+            <li>1 small Cauliflower (Gobi), broken into florets</li>
+            <li>1 Onion (Pyaz), chopped</li>
+            <li>1 Tomato (Tamatar), chopped</li>
+            <li>1/2 tsp Turmeric Powder (Haldi)</li>
+            <li>1 tsp Red Chili Powder (Lal Mirch Powder)</li>
+            <li>1 tsp Garam Masala</li>
+            <li>Salt to taste</li>
+            <li>2 tbsp Oil</li>
+        </ul>
+    
+        <h2>Instructions:</h2>
+    
+        <h3><b>Cook the vegetables:</b></h3>
+        <ol>
+            <li>Heat 2 tablespoons of oil in a large pan.</li>
+            <li>Add the chopped onions (pyaz) and sauté for 5-7 minutes until golden brown.</li>
+            <li>Add the chopped tomatoes (tamatar) and cook for 3-4 minutes until they soften.</li>
+        </ol>
+    
+        <h3><b>Add the spices:</b></h3>
+        <ol>
+            <li>Add 1/2 teaspoon of turmeric powder (haldi), 1 teaspoon red chili powder (lal mirch), and 1 teaspoon garam masala.</li>
+            <li>Stir well and cook the spices for another 2-3 minutes until fragrant.</li>
+        </ol>
+    
+        <h3><b>Add potatoes and cauliflower:</b></h3>
+        <ol>
+            <li>Add the diced potatoes (aloo) and cauliflower florets (gobi) to the pan.</li>
+            <li>Mix everything well, so the vegetables are coated in the spices.</li>
+            <li>Add salt to taste.</li>
+        </ol>
+    
+        <h3><b>Simmer the curry:</b></h3>
+        <ol>
+            <li>Add about 1/2 cup of water to the pan and stir everything.</li>
+            <li>Cover the pan and let the vegetables cook for 15-20 minutes on low heat, stirring occasionally.</li>
+            <li>You can check the potatoes and cauliflower by poking them with a fork to see if they are tender.</li>
+        </ol>
+    
+        <h3><b>Serve:</b></h3>
+        <ol>
+            <li>Once the curry is ready, serve it hot with roti or rice.</li>
+        </ol>
+    
+        <h2>Enjoy your Aloo Gobi curry!</h2>
+    
+         
+          </div>
+        </div>
+        <div class="popup" id="Chana-masala">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+           <h2>Ingredients:</h2>
+           <ul>
+               <li>1 can Chana (Chickpeas) or 1 cup boiled Chana</li>
+               <li>1 Onion (Pyaz), chopped</li>
+               <li>1 Tomato (Tamatar), chopped</li>
+               <li>1-2 Green Chilies (Hari Mirch), slit</li>
+               <li>1 tsp Ginger-Garlic Paste (Adrak-Lahsun Paste)</li>
+               <li>1 tsp Chana Masala Powder</li>
+               <li>1/2 tsp Red Chili Powder (Lal Mirch Powder)</li>
+               <li>1/2 tsp Cumin Seeds (Jeera)</li>
+               <li>1/2 tsp Turmeric Powder (Haldi)</li>
+               <li>1 tsp Garam Masala</li>
+               <li>Salt to taste</li>
+               <li>2 tbsp Oil (Tel)</li>
+               <li>Fresh Coriander (Hara Dhania) for garnish</li>
+           </ul>
+       
+           <h2>Instructions:</h2>
+       
+           <h3><b>Prepare the Chana:</b></h3>
+           <ol>
+               <li>If using canned Chana, drain and rinse it well. If using boiled Chana, keep it aside.</li>
+           </ol>
+       
+           <h3><b>Cook the Tempering:</b></h3>
+           <ol>
+               <li>Heat 2 tbsp oil in a pan on medium heat.</li>
+               <li>Add cumin seeds (jeera) and let them splutter.</li>
+           </ol>
+       
+           <h3><b>Saute the Onion and Tomatoes:</b></h3>
+           <ol>
+               <li>Add chopped onion (pyaz) and cook till golden brown.</li>
+               <li>Now add ginger-garlic paste (adrak-lahsun paste) and sauté for 1 minute.</li>
+               <li>Add chopped tomatoes (tamatar) and cook until soft.</li>
+           </ol>
+       
+           <h3><b>Add the Spices:</b></h3>
+           <ol>
+               <li>Now add red chili powder (lal mirch), turmeric powder (haldi), and chana masala powder. Stir well.</li>
+           </ol>
+       
+           <h3><b>Add Chana:</b></h3>
+           <ol>
+               <li>Now add the Chana (chickpeas) and mix everything together.</li>
+               <li>Add 1 cup of water and cook for 5-7 minutes. Add salt to taste.</li>
+           </ol>
+       
+           <h3><b>Finish the Dish:</b></h3>
+           <ol>
+               <li>Add garam masala and cook for 2 more minutes.</li>
+               <li>Garnish with fresh coriander (hara dhania).</li>
+           </ol>
+       
+           <h2>Enjoy your quick and delicious Chana Masala!</h2>
+           
+          </div>
+        </div>
+        <div class="popup" id="Matar-pulao">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+            <h2>Ingredients:</h2>
+            <ul>
+                <li>1 cup Basmati Rice (Chawal)</li>
+                <li>1/2 cup Green Peas (Matar)</li>
+                <li>1 Onion (Pyaz), sliced</li>
+                <li>1 tsp Cumin Seeds (Jeera)</li>
+                <li>1 Bay Leaf (Tej Patta)</li>
+                <li>2-3 Cloves (Laung)</li>
+                <li>1-2 Cinnamon Sticks (Dalchini)</li>
+                <li>Salt to taste</li>
+                <li>1 tbsp Oil (Tel)</li>
+            </ul>
+        
+            <h2>Instructions:</h2>
+        
+            <h3><b>Prepare the Rice:</b></h3>
+            <ol>
+                <li>Wash the basmati rice under cold water until the water runs clear. Drain and set it aside.</li>
+            </ol>
+        
+            <h3><b>Cook the Spices:</b></h3>
+            <ol>
+                <li>Heat 1 tablespoon of oil in a pan. Add cumin seeds (jeera), bay leaf (tej patta), cloves (laung), and cinnamon sticks (dalchini). Let them crackle for a few seconds.</li>
+            </ol>
+        
+            <h3><b>Sauté Onions and Peas:</b></h3>
+            <ol>
+                <li>Add the sliced onions (pyaz) to the pan and sauté until they turn golden brown (about 5 minutes).</li>
+                <li>Add the green peas (matar) and cook for another 2-3 minutes.</li>
+            </ol>
+        
+            <h3><b>Cook the Rice:</b></h3>
+            <ol>
+                <li>Add the drained rice (chawal) to the pan and mix it with the peas and spices. Stir gently to avoid breaking the rice.</li>
+                <li>Add 2 cups of water and salt. Bring it to a boil, then cover and reduce the heat. Let it cook for 10-12 minutes or until the rice is fully cooked and the water is absorbed.</li>
+            </ol>
+        
+            <h3><b>Serve:</b></h3>
+            <ol>
+                <li>Fluff the rice with a fork and serve hot with yogurt, raita, or curry.</li>
+            </ol>
+        
+            <h2>Enjoy your delicious Matar Pulao!</h2>
+          </div>
+        </div>
+        <div class="popup" id="Lassi">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+           <h2>Ingredients:</h2>
+           <ul>
+               <li>1 cup Plain Yogurt (Dahi)</li>
+               <li>1/2 cup Cold Water</li>
+               <li>1-2 tbsp Sugar (or to taste)</li>
+               <li>A pinch of Cardamom Powder (Elaichi) (optional)</li>
+               <li>Ice Cubes (optional)</li>
+           </ul>
+       
+           <h2>Instructions:</h2>
+       
+           <h3><b>Blend the Ingredients:</b></h3>
+           <ol>
+               <li>In a blender, add the plain yogurt (dahi), sugar, cold water, and cardamom powder (elaichi) if using. Blend everything together until smooth and creamy.</li>
+           </ol>
+       
+           <h3><b>Adjust Sweetness:</b></h3>
+           <ol>
+               <li>Taste the lassi and add more sugar if needed. If you prefer a thicker consistency, add less water.</li>
+           </ol>
+       
+           <h3><b>Serve:</b></h3>
+           <ol>
+               <li>Pour the lassi into a glass, add ice cubes if desired, and serve chilled.</li>
+           </ol>
+       
+           <h2>Enjoy your refreshing Lassi!</h2>
+          </div>
+        </div>
+        <div class="popup" id="Methi-thepla">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+           <h2>Ingredients:</h2>
+           <ul>
+               <li>1 cup Wheat Flour (Gehu Ka Atta)</li>
+               <li>1/2 cup Fresh Methi Leaves (Fenugreek), chopped</li>
+               <li>1 tsp Cumin Powder (Jeera Powder)</li>
+               <li>1/2 tsp Turmeric Powder (Haldi Powder)</li>
+               <li>Salt to taste</li>
+               <li>Water (as needed)</li>
+               <li>Ghee or Oil for cooking</li>
+           </ul>
+       
+           <h2>Instructions:</h2>
+       
+           <h3><b>Prepare the Dough:</b></h3>
+           <ol>
+               <li>In a bowl, combine the wheat flour (gehu ka atta), chopped methi leaves (fenugreek), cumin powder (jeera powder), turmeric powder (haldi), and salt.</li>
+               <li>Gradually add water and knead it into a soft dough. The dough should be smooth and elastic.</li>
+               <li>Cover the dough and let it rest for 10-15 minutes.</li>
+           </ol>
+       
+           <h3><b>Roll the Theplas:</b></h3>
+           <ol>
+               <li>After resting, divide the dough into small balls. Roll each ball into a small, round flatbread using a rolling pin. Dust with flour to avoid sticking.</li>
+           </ol>
+       
+           <h3><b>Cook the Thepla:</b></h3>
+           <ol>
+               <li>Heat a tawa (flat pan) on medium heat. Place the rolled-out thepla on the pan.</li>
+               <li>When you see bubbles forming, flip it over. Apply ghee or oil on the top side and flip again.</li>
+               <li>Cook both sides until golden brown spots appear.</li>
+           </ol>
+       
+           <h3><b>Serve:</b></h3>
+           <ol>
+               <li>Serve the methi thepla hot with yogurt, pickle, or a glass of buttermilk.</li>
+           </ol>
+       
+           <h2>Enjoy your delicious Methi Thepla!</h2>
+          
+          </div>
+        </div>
+        <div class="popup" id="Tawa-pulao">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+             <h2>Ingredients:</h2>
+             <ul>
+                 <li>1 cup Cooked Rice (Chawal)</li>
+                 <li>1/2 cup Mixed Vegetables (Carrot, Peas, Beans, etc.)</li>
+                 <li>1 Onion (Pyaz), chopped</li>
+                 <li>1 Tomato (Tamatar), chopped</li>
+                 <li>1 tsp Ginger-Garlic Paste</li>
+                 <li>1 tsp Pav Bhaji Masala (or Garam Masala)</li>
+                 <li>Salt to taste</li>
+                 <li>1 tbsp Oil (Tel)</li>
+                 <li>Fresh Coriander (Hara Dhania) for garnish</li>
+             </ul>
+         
+             <h2>Instructions:</h2>
+         
+             <h3><b>Prepare the Vegetables:</b></h3>
+             <ol>
+                 <li>Heat oil in a pan or tawa over medium heat.</li>
+                 <li>Add chopped onions (pyaz) and sauté until golden brown (about 5 minutes).</li>
+                 <li>Add ginger-garlic paste and cook for another minute until fragrant.</li>
+                 <li>Add the mixed vegetables (carrot, peas, beans, etc.) and cook for 5-7 minutes until they soften.</li>
+             </ol>
+         
+             <h3><b>Cook with Spices:</b></h3>
+             <ol>
+                 <li>Add chopped tomatoes (tamatar) and cook until they soften and release their juices.</li>
+                 <li>Add pav bhaji masala (or garam masala) and salt. Stir well and let it cook for 2-3 minutes.</li>
+             </ol>
+         
+             <h3><b>Add the Rice:</b></h3>
+             <ol>
+                 <li>Add the cooked rice (chawal) to the pan. Mix everything gently so the rice gets coated with the spices and vegetables.</li>
+                 <li>Stir-fry for 5-7 minutes on medium heat to allow the flavors to blend together.</li>
+             </ol>
+         
+             <h3><b>Serve:</b></h3>
+             <ol>
+                 <li>Garnish with fresh coriander (hara dhania) and serve your tawa pulao hot with raita or a side salad.</li>
+             </ol>
+         
+             <h2>Enjoy your spicy and delicious Tawa Pulao!</h2>
+          </div>
+        </div>
+        <div class="popup" id="Aloo-tikki">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+           <h2>Ingredients:</h2>
+           <ul>
+               <li>2 Boiled Potatoes (Aloo)</li>
+               <li>1 small Onion (Pyaz), chopped</li>
+               <li>Salt, Red Chili Powder, Garam Masala, Cumin Powder (to taste)</li>
+               <li>1 tbsp Cornflour (optional)</li>
+               <li>Oil for frying (Tel)</li>
+           </ul>
+       
+           <h2>Instructions:</h2>
+       
+           <h3><b>Prepare the Mixture:</b></h3>
+           <ol>
+               <li>Mash the boiled potatoes (aloo) in a bowl.</li>
+               <li>Add chopped onion (pyaz), salt, red chili powder, garam masala, cumin powder, and cornflour (if using) to the mashed potatoes. Mix well.</li>
+           </ol>
+       
+           <h3><b>Shape the Tikkis:</b></h3>
+           <ol>
+               <li>Divide the mixture into small portions and shape them into flat round patties (tikkis).</li>
+           </ol>
+       
+           <h3><b>Fry the Tikkis:</b></h3>
+           <ol>
+               <li>Heat oil (tel) in a pan over medium heat. Place the tikkis in the pan and cook on both sides until they are golden brown and crispy (about 3-4 minutes per side).</li>
+           </ol>
+       
+           <h3><b>Serve:</b></h3>
+           <ol>
+               <li>Serve the hot aloo tikkis with chutney or yogurt.</li>
+           </ol>
+       
+           <h2>Enjoy your crispy and delicious Aloo Tikki!</h2>
+          </div>
+        </div>
+        <div class="popup" id="Dahi-puri">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+          <h2>Ingredients:</h2>
+          <ul>
+              <li>6-8 Puri (store-bought or homemade)</li>
+              <li>1/2 cup Yogurt (Dahi), whisked</li>
+              <li>1 Boiled Potato (Aloo), mashed</li>
+              <li>2 tbsp Tamarind Chutney (optional)</li>
+              <li>Salt, Chaat Masala, Red Chili Powder to taste</li>
+          </ul>
+      
+          <h2>Instructions:</h2>
+      
+          <h3><b>Prepare the Puri:</b></h3>
+          <ol>
+              <li>If you are using store-bought puris, break the top of each puri gently with your finger to create a small hole.</li>
+          </ol>
+      
+          <h3><b>Stuff with Mashed Potatoes:</b></h3>
+          <ol>
+              <li>Mash the boiled potato (aloo) and stuff a small amount of it into each puri. Be careful not to overstuff.</li>
+          </ol>
+      
+          <h3><b>Top with Yogurt:</b></h3>
+          <ol>
+              <li>Spoon a generous amount of whisked yogurt (dahi) over the stuffed puris.</li>
+          </ol>
+      
+          <h3><b>Add Chutney and Spices:</b></h3>
+          <ol>
+              <li>Drizzle tamarind chutney over the yogurt for sweetness and tanginess (optional).</li>
+              <li>Sprinkle chaat masala, red chili powder, and a pinch of salt over the puris to add flavor.</li>
+          </ol>
+      
+          <h3><b>Serve Immediately:</b></h3>
+          <ol>
+              <li>Serve the dahi puri immediately after preparing it for the best crunch and taste.</li>
+          </ol>
+      
+          <h2>Enjoy your delicious and tangy Dahi Puri!</h2>
+          </div>
+        </div>
+        <div class="popup" id="Simple-vegetable-soup">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+                <h2>Instructions:</h2>
+
+                <h3><b>Prepare the Vegetables:</b></h3>
+                <ol>
+                    <li>Wash and chop all the vegetables (carrot, beans, peas, etc.) into small pieces.</li>
+                    <li>Heat oil (tel) in a large pan over medium heat.</li>
+                    <li>Add chopped onions (pyaz) and sauté for 3-4 minutes until soft.</li>
+                </ol>
+            
+                <h3><b>Add Tomatoes and Spices:</b></h3>
+                <ol>
+                    <li>Add chopped tomatoes (tamatar) to the pan and cook until they soften.</li>
+                    <li>Add the mixed vegetables, salt, and pepper. Stir everything together.</li>
+                </ol>
+            
+                <h3><b>Simmer the Soup:</b></h3>
+                <ol>
+                    <li>Pour in 3 cups of water and bring the mixture to a boil.</li>
+                    <li>Once it boils, lower the heat and let it simmer for 15-20 minutes, allowing the vegetables to cook and the flavors to blend.</li>
+                </ol>
+            
+                <h3><b>Serve:</b></h3>
+                <ol>
+                    <li>Once the soup is ready, you can optionally add oregano for an extra flavor kick.</li>
+                    <li>Serve the vegetable soup hot with a slice of bread or crackers.</li>
+                </ol>
+            
+                <h2>Enjoy your warm and healthy Vegetable Soup!</h2>
+          </div>
+        </div>
+        <div class="popup" id="Cheela">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+            <h2>Ingredients:</h2>
+            <ul>
+                <li>1 cup Besan (Gram Flour)</li>
+                <li>1 small Onion (Pyaz), finely chopped</li>
+                <li>1 small Tomato (Tamatar), chopped</li>
+                <li>1-2 Green Chilies (optional), chopped</li>
+                <li>Salt, Red Chili Powder, Cumin Powder to taste</li>
+                <li>Water (as needed)</li>
+                <li>Oil for cooking (Tel)</li>
+            </ul>
+        
+            <h2>Instructions:</h2>
+        
+            <h3><b>Make the Batter:</b></h3>
+            <ol>
+                <li>In a bowl, mix the besan (gram flour), chopped onion (pyaz), tomato (tamatar), green chilies (if using), and spices (salt, red chili powder, cumin powder).</li>
+                <li>Add water little by little to make a smooth batter, similar to pancake batter. The consistency should be pourable but not too runny.</li>
+            </ol>
+        
+            <h3><b>Cook the Chilla:</b></h3>
+            <ol>
+                <li>Heat a non-stick tawa (pan) on medium heat and drizzle a little oil (tel).</li>
+                <li>Pour a ladle of the batter onto the tawa and spread it into a round shape. Cook for 2-3 minutes until the bottom is golden brown.</li>
+                <li>Flip the chilla and cook the other side for another 2-3 minutes.</li>
+            </ol>
+        
+            <h3><b>Serve:</b></h3>
+            <ol>
+                <li>Serve the chilla hot with chutney or yogurt.</li>
+            </ol>
+        
+            <h2>Enjoy your crispy and delicious Chilla!</h2>
+          </div>
+        </div>
+        <div class="popup" id="Cabbage-paratha">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+          <h2>Ingredients:</h2>
+          <ul>
+              <li>1 cup Wheat Flour (Gehu ka Atta)</li>
+              <li>1 small Cabbage (Band Gobhi), grated</li>
+              <li>Salt to taste</li>
+              <li>1/2 tsp Red Chili Powder</li>
+              <li>1/2 tsp Ajwain (Carom Seeds) (optional)</li>
+              <li>Ghee or Oil for cooking (Tel)</li>
+          </ul>
+      
+          <h2>Instructions:</h2>
+      
+          <h3><b>Make the Dough:</b></h3>
+          <ol>
+              <li>Take 1 cup wheat flour (gehu ka atta) in a bowl. Add a pinch of salt and mix.</li>
+              <li>Gradually add water and knead the flour into a smooth dough. It should be soft but not sticky.</li>
+              <li>Cover it with a damp cloth and let it rest for 10-15 minutes.</li>
+          </ol>
+      
+          <h3><b>Prepare the Cabbage Filling:</b></h3>
+          <ol>
+              <li>Grate the cabbage (band gobhi) and squeeze out any excess water.</li>
+              <li>In a bowl, mix the grated cabbage with salt, red chili powder, and ajwain (optional). You can also add a little garam masala if you like.</li>
+          </ol>
+      
+          <h3><b>Stuff the Paratha:</b></h3>
+          <ol>
+              <li>Divide the dough into small balls. Take one ball of dough and roll it out into a small circle.</li>
+              <li>Place a spoonful of the cabbage mixture in the center of the circle. Fold the dough edges over the cabbage to form a pouch and seal it tightly.</li>
+          </ol>
+      
+          <h3><b>Roll the Paratha:</b></h3>
+          <ol>
+              <li>Gently roll the stuffed dough ball into a flat paratha using a rolling pin. Dust it lightly with flour to avoid sticking.</li>
+          </ol>
+      
+          <h3><b>Cook the Paratha:</b></h3>
+          <ol>
+              <li>Heat a tawa (flat pan) on medium heat. Once hot, place the rolled paratha on the pan.</li>
+              <li>When small bubbles appear, flip the paratha. Apply ghee or oil (tel) on the top side and flip again. Cook both sides until they are golden brown and crispy.</li>
+          </ol>
+      
+          <h3><b>Serve:</b></h3>
+          <ol>
+              <li>Serve the cabbage paratha hot with yogurt, pickle, or chutney.</li>
+          </ol>
+      
+          <h2>Enjoy your delicious and healthy Cabbage Paratha!</h2>
+          </div>
+        </div>
+        <div class="popup" id="Masoor-dal">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: rgb(166, 166, 166);
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+   <h2>Ingredients:</h2>
+   <ul>
+       <li>1 cup Masoor Dal (Red Lentils)</li>
+       <li>1 Onion (Pyaz), chopped</li>
+       <li>1 Tomato (Tamatar), chopped</li>
+       <li>1/2 tsp Turmeric Powder</li>
+       <li>1 tsp Red Chili Powder</li>
+       <li>1 tsp Cumin Powder</li>
+       <li>Salt to taste</li>
+       <li>2 tbsp Oil</li>
+       <li>Water as needed</li>
+       <li>Fresh Coriander for garnish (Hara Dhania)</li>
+   </ul>
+
+   <h2>Instructions:</h2>
+
+   <h3><b>Rinse and Cook the Dal:</b></h3>
+   <ol>
+       <li>Wash the masoor dal under cold water to remove any dirt.</li>
+       <li>In a pressure cooker, add the washed dal and 3 cups of water. Pressure cook for 3-4 whistles or cook in a regular pot until the dal is soft and cooked through.</li>
+   </ol>
+
+   <h3><b>Prepare the Tempering (Tadka):</b></h3>
+   <ol>
+       <li>In a separate pan, heat 2 tablespoons of oil over medium heat.</li>
+       <li>Add chopped onions and sauté until golden brown (about 5-7 minutes).</li>
+       <li>Add the chopped tomatoes to the pan and cook until they soften (about 5 minutes).</li>
+       <li>Add salt, turmeric powder, red chili powder, and cumin powder. Mix everything well and cook for 2-3 minutes, allowing the spices to cook.</li>
+   </ol>
+
+   <h3><b>Combine Dal and Tempering:</b></h3>
+   <ol>
+       <li>Add the cooked dal to the pan with the onion-tomato masala.</li>
+       <li>Stir everything together, and add more water if you prefer a thinner consistency for the dal. Bring it to a simmer for 5-10 minutes, allowing the flavors to blend.</li>
+   </ol>
+
+   <h3><b>Serve:</b></h3>
+   <ol>
+       <li>Garnish the dal with freshly chopped coriander leaves (hara dhania).</li>
+       <li>Serve it hot with steamed rice or roti.</li>
+   </ol>
+
+   <h2>Enjoy your flavorful and comforting Masoor Dal!</h2>
+         
+          </div>
+        </div>
+        <div class="popup" id="Suji-ka-halwa">
+          <div class="popup-content">
+            <a href="#recipes" class="close-btn">×</a>
+            <style>
+              body {
+                  color: darkgreen;
+                  font-family: Arial, sans-serif;
+              }
+              h1, h2 {
+                  color: black;
+                  font-weight: bold;
+              }
+              ul, ol {
+                  font-size: 16px;
+              }
+          </style>
+              <h2>Ingredients:</h2>
+              <ul>
+                  <li>1/2 cup Suji (Semolina)</li>
+                  <li>1/4 cup Ghee</li>
+                  <li>1/2 cup Sugar</li>
+                  <li>1 cup Water</li>
+                  <li>1/4 cup Chopped Nuts (Cashews, Almonds, etc.)</li>
+                  <li>A pinch of Cardamom Powder (optional)</li>
+              </ul>
+          
+              <h2>Instructions:</h2>
+          
+              <h3><b>Roast the Suji:</b></h3>
+              <ol>
+                  <li>Heat ghee in a pan over medium heat. Add the semolina (suji) and roast it until it turns light golden brown and gives off a pleasant aroma. This should take about 5-7 minutes. Keep stirring to avoid burning.</li>
+              </ol>
+          
+              <h3><b>Make the Sugar Syrup:</b></h3>
+              <ol>
+                  <li>In a separate pan, bring 1 cup of water to a boil. Add sugar to the water and stir until the sugar dissolves completely.</li>
+                  <li>You can also add a pinch of cardamom powder to the syrup for extra flavor.</li>
+              </ol>
+          
+              <h3><b>Combine the Suji and Sugar Syrup:</b></h3>
+              <ol>
+                  <li>Slowly pour the sugar syrup into the roasted semolina while stirring continuously to avoid lumps.</li>
+                  <li>Cook on low heat for 3-4 minutes until the halwa thickens and the water is absorbed.</li>
+              </ol>
+          
+              <h3><b>Add Nuts and Serve:</b></h3>
+              <ol>
+                  <li>Garnish with chopped nuts (cashews, almonds, etc.).</li>
+                  <li>Serve hot or warm.</li>
+              </ol>
+          
+              <h2>Enjoy your delicious and comforting Suji Ka Halwa!</h2>
+          </div>
+        </div>
+      </section>
+      <!-- About Section -->
+      <section id="about">
+        <h2>About</h2>
+        <div class="about-container">
+          <p id="about-paragraph">
+            "We, three second-year B.Tech CSE students, have undertaken the initiative to develop Recipe Finder, a website built exclusively using HTML and CSS, with a strong focus on addressing a prevalent issue faced by hostel and PG residents. Many students living in such accommodations often find themselves compromising on the quality, taste, and nutritional value of their meals. Due to the lack of time, limited kitchen resources, and minimal ingredients, they are frequently left with no choice but to settle for bland, monotonous dishes that are quick to prepare but unsatisfactory in terms of flavor.
+
+In our research process, we sought to understand these challenges more deeply by engaging in conversations with housewives, hostel students, and others who experience similar constraints in their daily cooking routines. We carefully curated a collection of recipes on Recipe Finder that not only require minimal ingredients but can also be prepared in a short amount of time, without sacrificing taste or nutritional value. Our aim was to provide students and individuals living alone with the means to prepare delicious, easy-to-make meals that don’t compromise on either quality or flavor.
+
+The recipes featured on Recipe Finder are designed to be both practical and comforting, giving students the flexibility to prepare satisfying dishes with whatever ingredients they have on hand, while still enjoying a flavorful meal. By simplifying cooking processes and offering variety, we intend to alleviate the culinary struggles that come with a hectic student life. Our goal is to empower those living in limited spaces, with limited resources, to enjoy better meals that are quick, affordable, and most importantly, delightful to the palate.
+
+In essence, we hope that Recipe Finder will not only serve as a practical solution to time-pressed individuals but also encourage a deeper appreciation for cooking, even with the simplest of ingredients. We believe that everyone deserves a tasty and fulfilling meal, regardless of their busy schedules or the constraints of their kitchens."
+          </p>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <p>
+              We, Aadi sharma,Faraaz khan and Ayush verma are the creators and developers of Recipe Finder, and we are pleased to share our work with you. As students in the midst of our academic journeys, we have put forth our utmost effort and dedication to building this website to the best of our current capabilities. While we have worked diligently to ensure the site meets a high standard, we are still in the learning phase, and as such, there may be areas where we can improve or refine our work further.
+
+              We understand that constructive feedback is essential for growth, and as we continue to hone our skills and expand our knowledge, we value the input of those who engage with the site. Whether you have suggestions for enhancement, questions regarding its functionality, or would like to convey any concerns, we welcome all communication. Please do not hesitate to reach out to any of us directly, and we will be more than happy to assist or consider your thoughts as we work toward continual improvement.
+              
+              Below, you will find the contact details for each of us:
+               <br>
+               <ul>
+                <li> Aadi sharma - aadisharma7370@gmail.com</li>
+                <li>Faraaz khan - faraazkhan1369@gmail.com</li>
+                <li>Ayush verma - ayushverma6776e@gmail.com</li>
+              </ul>
+              
+              
+              
+            </br>
+              Your feedback is of great importance to us as we strive to develop both our website and ourselves as creators. Thank you for your time, understanding, and support.
+            </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2025 Recipe Finder. All rights reserved.</p>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- JavaScript Code -->
+  <script>
+    document.documentElement.style.scrollBehavior = "smooth";
+  
+    // Debounce function to optimize performance
+    function debounce(func, delay) {
+      let timer;
+      return function(...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, args), delay);
+      };
+    }
+  
+    // Filter Recipes with Highlighting and Clear Search Function
+    function filterRecipes() {
+      const searchInput = document.getElementById('search-input').value.toLowerCase();
+      const recipeCards = document.querySelectorAll('.recipe-card');
+      let resultsFound = false;
+  
+      recipeCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+  
+        // Highlight matching text in title and description
+        card.querySelector('h3').innerHTML = highlightText(card.querySelector('h3').textContent, searchInput);
+        card.querySelector('p').innerHTML = highlightText(card.querySelector('p').textContent, searchInput);
+  
+        if (title.includes(searchInput) || description.includes(searchInput)) {
+          card.style.display = 'block'; // Show matching recipe
+          resultsFound = true;
+        } else {
+          card.style.display = 'none'; // Hide non-matching recipe
+        }
+      });
+  
+      // Show 'No results found' if no matches
+      const noResultsMessage = document.getElementById('no-results-message');
+      if (!resultsFound) {
+        noResultsMessage.style.display = 'block';
+      } else {
+        noResultsMessage.style.display = 'none';
+      }
+    }
+  
+    // Function to highlight matching text
+    function highlightText(text, query) {
+      if (!query) return text; // Return original text if no query
+      const regex = new RegExp(`(${query})`, 'gi');
+      return text.replace(regex, '<span class="highlight">$1</span>');
+    }
+  
+    // Clear search function
+    function clearSearch() {
+      const searchInput = document.getElementById('search-input');
+      searchInput.value = '';
+      filterRecipes(); // Revert the recipe cards to the original state
+    }
+  
+    // Debounce the filterRecipes function
+    const debouncedSearch = debounce(filterRecipes, 300);  // 300ms delay
+  </script>
+  
 </body>
 </html>
