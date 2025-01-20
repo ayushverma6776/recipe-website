@@ -1,126 +1,602 @@
-:root {
-    --primary-color: #ff6f61;
-    --secondary-color: #333;
-    --text-color: #fff;
-    --bg-color: #f8f8f8;
-    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
 }
 
-* {
+/* Body */
+body {
+  background-color: #f8f8f8;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+/* Header Section */
+header {
+  background-image: url('bgphoto.jpg');
+  background-size: cover;
+  background-position: center center;
+  color: white;
+  text-align: center;
+  padding: 6rem 1rem;
+  position: relative;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.header-container {
+  position: relative;
+  z-index: 2;
+}
+
+.header-container h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.header-container p {
+  font-size: 1.5rem;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.search-explore-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 10px;
+  width: 300px;
+  border: 2px solid #4CAF50;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+.search-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #45a049;
+}
+
+.cta-button {
+  background-color: #4CAF50;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  margin-left: 20px;
+}
+
+.cta-button:hover {
+  background-color: #45a049;
+}
+/* Navigation and Main Section */
+/* Navbar Styles */
+nav {
+  background: linear-gradient(135deg, #4CAF50, #333); /* Gradient background */
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar list */
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around; /* Adds even spacing between items */
+  align-items: center; /* Vertically aligns the items */
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* Navbar links */
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 14px 30px; /* More padding for better space around text */
+  font-size: 1.2rem;
+  font-weight: bold; /* Makes the text more prominent */
+  letter-spacing: 1px;
+  text-transform: uppercase; /* Capitalizes text for a cleaner look */
+  transition: background-color 0.3s, transform 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for links */
+nav a:hover {
+  background-color: #45a049;
+  transform: translateY(-5px); /* Slightly lifts the link on hover */
+}
+
+/* Optional: Add a responsive break at a certain screen width */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column; /* Stacks items vertically on smaller screens */
+    align-items: flex-start;
+  }
+
+  nav a {
+    padding: 12px 20px; /* Adjust padding for mobile */
+    font-size: 1.1rem; /* Slightly smaller font on mobile */
+  }
+}
+
+
+
+
+/* Footer Section */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.footer-container ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-container ul li {
+  margin: 0 10px;
+}
+
+.footer-container ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-container ul li a:hover {
+  color: #4CAF50;
+}
+
+.footer-container p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Recipe List */
+.recipe-list {
+  display: flex;
+  flex-wrap: wrap;   /* Ensure items wrap to the next line */
+  gap: 10px;         /* Space between cards */
+  padding: 2rem 0;
+  justify-content: flex-start; /* Align items to the left */
+}
+
+/* Recipe List */
+.recipe-list {
+  display: flex;
+  flex-wrap: wrap;   /* Ensure items wrap to the next line */
+  gap: 10px;         /* Space between cards */
+  padding: 2rem 0;
+  justify-content: flex-start; /* Align items to the left */
+}
+
+/* Recipe Card */
+.recipe-card {
+  width: calc(25% - 10px); /* Ensures each card takes 25% of the width minus the gap */
+  height: auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+/* Hover Effect */
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Title Styling */
+.recipe-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* Link Styling */
+.recipe-card a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.recipe-card a:hover {
+  text-decoration: underline;
+}
+
+
+/* Popup Styles */
+.popup {
+  display: none;
+}
+
+.popup:target {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+}
+
+.popup-content {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.close-btn {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  font-size: 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.close-btn:hover {
+  background-color: #45a049;
+}
+
+/* Responsive Images */
+img {
+  max-width: 100%;
+  
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .recipe-list {
+    flex-direction: column;
+  }
+}
+/* General Styles for the About Section */
+#about {
+  background-color: #e8f5e9; /* Light green background similar to the navbar */
+  padding: 50px 20px;
+  font-family: 'great vibes',Georgia, 'Times New Roman', Times, serif ;
+  font-style: italic;
+  color: #2e7d32; /* Dark green text color */
+  margin: 20px 0;
+  border-radius: 8px;
+  border: 3px solid #388e3c; /* Adding border around the About section */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+#about h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: #388e3c; /* Slightly darker green for headings */
+  text-transform: uppercase;
+}
+
+#about p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  text-align: justify;
+  color: #4caf50; /* Standard green text color */
+  max-height: none; /* Initially collapsed state */
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+#about p.expanded {
+  max-height: 1000px; /* Expanded state */
+}
+
+#toggle-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+}
+
+#toggle-button:hover {
+  background-color: #2c6f2e;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Add a hover effect to the About section */
+#about:hover {
+  background-color: #ffffff; /* Lighter green when hovering */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #about h2 {
+      font-size: 1.8em;
+  }
+
+  #about p {
+      font-size: 1em;
+  }
+
+  #toggle-button {
+      font-size: 1em;
+  }
+}
+#contact {
+  background-color: #ffffff; /* Light greenish background to match the theme */
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+  color: #2e7d32; /* Dark green text color */
+  margin: 20px 0;
+  border-radius: 8px;
+  border: 3px solid #388e3c; /* Adding border around the Contact section */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+#contact h2 {
+  font-size: 2.5em;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: bold;
+  color: #388e3c; /* Darker green for headings */
+  text-transform: uppercase;
+}
+
+#contact p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  text-align: justify;
+  color: #2dc465; /* Standard green text color */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  font-size: 1.2em;
+  color: #388e3c;
+  margin-bottom: 10px;
+}
+
+.contact-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: left; /* Align text to the left for better readability */
+}
+
+#contact ul {
+  margin-top: 20px;
+}
+
+/* Add a hover effect to the Contact section */
+#contact:hover {
+  background-color: #c8e6c9; /* Lighter green when hovering */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #contact h2 {
+    font-size: 2em;
+  }
+
+  #contact p {
+    font-size: 1em;
+  }
+
+  ul li {
+    font-size: 1em;
+  }
+}
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
 }
 
-body {
-    background-color: var(--bg-color);
-    color: var(--secondary-color);
-}
-
-header {
-    background-color: var(--primary-color);
-    color: var(--text-color);
+h1 {
     text-align: center;
-    padding: 20px;
+    margin-top: 20px;
+    font-size: 2rem;
 }
 
-header p {
-    margin: 10px 0;
+.search-explore-container {
+    text-align: center;
+    margin-top: 30px;
 }
 
-header input {
-    margin-top: 10px;
-    padding: 10px;
-    width: 80%;
+.search-form {
+    display: inline-flex;
+    gap: 10px;
+}
+
+.search-input {
+    padding: 8px;
+    width: 300px;
+    border-radius: 4px;
     border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+.search-button {
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-nav {
-    background-color: var(--secondary-color);
+.search-button:hover {
+    background-color: #0056b3;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
+.results-container {
+    margin-top: 30px;
+    text-align: center;
 }
 
-nav a {
-    color: var(--text-color);
+.results-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.results-list li {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.back-button {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1rem;
+    color: #007BFF;
     text-decoration: none;
-    font-weight: bold;
 }
 
-nav a:hover {
+.back-button:hover {
     text-decoration: underline;
 }
-
-h2 {
-    margin-bottom: 20px;
-    text-align: center;
+#about {
+  background-color: #e8f5e9; /* Light green background similar to the navbar */
+  padding: 50px 20px;
+  font-family: 'great vibes',Georgia, 'Times New Roman', Times, serif ;
+  font-style: italic;
+  color: #2e7d32; /* Dark green text color */
+  margin: 20px 0;
+  border-radius: 8px;
+  border: 3px solid #388e3c; /* Adding border around the About section */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
-#recipe-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+#about h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: #388e3c; /* Slightly darker green for headings */
+  text-transform: uppercase;
 }
 
-.recipe-card {
-    background-color: var(--text-color);
-    color: var(--secondary-color);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-    transition: transform 0.2s ease-in-out;
+#about p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  text-align: justify;
+  color: #4caf50; /* Standard green text color */
+  max-height: none; /* Initially collapsed state */
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
 }
 
-.recipe-card:hover {
-    transform: scale(1.05);
+#about p.expanded {
+  max-height: none; /* Expanded state */
 }
 
-.recipe-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
+#toggle-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
 }
 
-.recipe-card h3 {
-    padding: 10px;
-    font-size: 1.5rem;
+#toggle-button:hover {
+  background-color: #2c6f2e;
 }
 
-.recipe-card button {
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    width: 100%;
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
 }
 
-.recipe-card button:hover {
-    background-color: #ff5a4d;
+/* Add a hover effect to the About section */
+#about:hover {
+  background-color: #ffffff; /* Lighter green when hovering */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
-.recipe-details {
-    padding: 10px;
-    display: none;
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+  #about h2 {
+      font-size: 1.8em;
+  }
 
-footer {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
-}
+  #about p {
+      font-size: 1em;
+  }
+
+  #toggle-button {
+      font-size: 1em;
+  }
+}           
